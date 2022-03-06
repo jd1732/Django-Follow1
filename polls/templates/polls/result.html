@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RESULT:Question{{q.id}} - Polls</title>
+</head>
+<body>
+    <h1>{{q.ques_text}}</h1>
+    <ul> {% for c in q.choices_set.all %}
+            <li>{{c.choice_text}}--->{{c.vote}} vote{{c.vote|pluralize}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

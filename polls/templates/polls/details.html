@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DETAIL:Question{{q.id}} - Polls</title>
+</head>
+<body>
+    <form action="{% url 'polls:votes' q.id %}" method="POST">
+    {% csrf_token %}
+    <fieldset>
+    <legend><h1>{{q.ques_text}}</h1></legend>
+    {% if error_message %}<strong><p>{{error_message}}</p></strong>{% endif %}
+    {% for c in q.choices_set.all %}
+        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value={{c.id}}
+        <label for="choice{{forloop.counter}}">{{c.choice_text}}</label><br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="vote">
+</form>
+
+</body>
+</html>

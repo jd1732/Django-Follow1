@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Polls</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    {%if latest_10_ques%}
+
+    <ul>
+        {%for q in latest_10_ques%}
+        <li><a href={% url 'polls:detail' q.id %}>{{q.ques_text}}</a></li>
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+    <p>No Polls Available!!!</p>
+    {% endif %}
+
+
+</body>
+</html>
